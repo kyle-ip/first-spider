@@ -32,8 +32,8 @@ class ZhihuSpider(scrapy.Spider):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36"
     }
 
-    username = '418704861@qq.com'
-    password = 'K418704861'
+    username = ''
+    password = ''
     user_type = 'email'
 
 
