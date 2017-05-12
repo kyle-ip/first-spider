@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2d2ea77-989a-40eb-8cea-1b5c42d867e9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/captcha.jpg" afterPath="$PROJECT_DIR$/captcha.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstSpider/items.py" afterPath="$PROJECT_DIR$/FirstSpider/items.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstSpider/spiders/zhihu.py" afterPath="$PROJECT_DIR$/FirstSpider/spiders/zhihu.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,14 +71,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zhihu.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="zhihu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FirstSpider/spiders/zhihu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="41" column="23" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+            <state relative-caret-position="-2464">
+              <caret line="41" column="48" lean-forward="true" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
               <folding>
                 <element signature="e#25#36#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="items_bak.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FirstSpider/items_bak.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="items.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FirstSpider/items.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="926">
-              <caret line="328" column="42" lean-forward="true" selection-start-line="328" selection-start-column="42" selection-end-line="328" selection-end-column="42" />
+            <state relative-caret-position="222">
+              <caret line="296" column="33" lean-forward="true" selection-start-line="296" selection-start-column="33" selection-end-line="296" selection-end-column="33" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
                 <element signature="e#3136#3966#0" expanded="false" />
@@ -166,8 +175,8 @@
       <find>start_user</find>
       <find>include_follow</find>
       <find>followers_url</find>
-      <find>keys</find>
       <find>custom_settings</find>
+      <find>keys</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,6 +203,7 @@
         <option value="$PROJECT_DIR$/FirstSpider/spiders/jobbole.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/FirstSpider/items.py" />
+        <option value="$PROJECT_DIR$/FirstSpider/spiders/zhihu_bak.py" />
         <option value="$PROJECT_DIR$/FirstSpider/spiders/zhihu.py" />
       </list>
     </option>
@@ -278,6 +288,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="FirstSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FirstSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FirstSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FirstSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spiders" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,20 +682,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://E:/Python35/Lib/urllib/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="407" column="4" lean-forward="false" selection-start-line="407" selection-start-column="4" selection-end-line="407" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Envs/article/Lib/site-packages/MySQLdb/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/Envs/article/Lib/site-packages/scrapy/loader/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -981,27 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstSpider/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="926">
-          <caret line="328" column="42" lean-forward="true" selection-start-line="328" selection-start-column="42" selection-end-line="328" selection-end-column="42" />
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
-            <element signature="e#3136#3966#0" expanded="false" />
-            <element signature="e#6343#7517#0" expanded="false" />
-            <marker date="1494586316433" expanded="true" signature="3173:3500" ph="insert into jobbole... " />
-            <marker date="1494586316433" expanded="true" signature="3173:3533" ph="insert into jobbole... " />
-            <marker date="1494586316433" expanded="true" signature="3501:3533" ph="UPDATE conte... " />
-            <marker date="1494586316433" expanded="true" signature="6766:7043" ph="insert into question... " />
-            <marker date="1494586316433" expanded="true" signature="7044:7277" ph="UPDATE conte... " />
-            <marker date="1494586316433" expanded="true" signature="8977:9263" ph="insert into answer... " />
-            <marker date="1494586316433" expanded="true" signature="9264:9462" ph="UPDATE conte... " />
-            <marker date="1494586316433" expanded="true" signature="12064:12418" ph="insert into lagou_job... " />
-            <marker date="1494586316433" expanded="true" signature="12419:12464" ph="UPDATE job_d... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/Envs/article/Lib/site-packages/scrapy/spiders/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -1026,12 +1019,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FirstSpider/spiders/zhihu_bak.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="156" column="42" lean-forward="false" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
+          <folding>
+            <element signature="e#25#36#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FirstSpider/spiders/zhihu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="41" column="23" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+        <state relative-caret-position="-2464">
+          <caret line="41" column="48" lean-forward="true" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
           <folding>
             <element signature="e#25#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstSpider/items_bak.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstSpider/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="296" column="33" lean-forward="true" selection-start-line="296" selection-start-column="33" selection-end-line="296" selection-end-column="33" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+            <element signature="e#3136#3966#0" expanded="false" />
+            <element signature="e#6343#7517#0" expanded="false" />
+            <marker date="1494586316433" expanded="true" signature="3173:3500" ph="insert into jobbole... " />
+            <marker date="1494586316433" expanded="true" signature="3173:3533" ph="insert into jobbole... " />
+            <marker date="1494586316433" expanded="true" signature="3501:3533" ph="UPDATE conte... " />
+            <marker date="1494586316433" expanded="true" signature="6766:7043" ph="insert into question... " />
+            <marker date="1494586316433" expanded="true" signature="7044:7277" ph="UPDATE conte... " />
+            <marker date="1494586316433" expanded="true" signature="8977:9263" ph="insert into answer... " />
+            <marker date="1494586316433" expanded="true" signature="9264:9462" ph="UPDATE conte... " />
+            <marker date="1494586316433" expanded="true" signature="12064:12418" ph="insert into lagou_job... " />
+            <marker date="1494586316433" expanded="true" signature="12419:12464" ph="UPDATE job_d... " />
           </folding>
         </state>
       </provider>
