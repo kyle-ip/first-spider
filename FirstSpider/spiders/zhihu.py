@@ -9,9 +9,8 @@ from urllib import parse
 
 import scrapy
 from scrapy.http import Request
-from scrapy.loader import ItemLoader
 
-from FirstSpider.items import ZhihuQuestionItem, ZhihuAnswerItem, QuestionItemLoader
+from FirstSpider.items import ZhihuQuestionItem, ZhihuAnswerItem, ZhihuUserItem, QuestionItemLoader
 
 
 class ZhihuSpider(scrapy.Spider):
@@ -19,34 +18,84 @@ class ZhihuSpider(scrapy.Spider):
     allowed_domains = ["www.zhihu.com"]
     start_urls = ['https://www.zhihu.com/']
 
-    custon_settings = {
+    custom_settings = {
         "COOKIES_ENABLED": True
     }
 
-    login_url = "https://www.zhihu.com/#signin"
-    answer_start_url = "https://www.zhihu.com/api/v4/questions/{0}/answers?sort_by=default&include=data%5B%2A%5D.is_normal%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B%2A%5D.author.badge%5B%3F%28type%3Dbest_answerer%29%5D.topics&limit={1}&offset={2}"
-
     headers = {
-        "HOST": "www.zhihu.com",
-        "Referer": "https://www.zhihu.com",
+        "Host": "www.zhihu.com",
+        "authorization": "Bearer Mi4wQUFEQWFTc2lBQUFBY01MZUF5S2FDeGNBQUFCaEFsVk5rUDQ3V1FCTXJRQVRhbmdYMU9rdi1CWXdsQkdDa1otWHVB|1494580682|b446ee779f1d40632a24852a231d54a89bb497d9",
+        "Connection:": "keep-alive",
+        "Accept-Language": "zh-CN,zh;q=0.8",
+        "Accept-Encoding": "gzip, deflate, sdch, br",
+        "accept": "application/json, text/plain, */*",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36"
     }
 
-    username = '418704861@qq.com'
-    password = 'K418704861'
+    # 登录页面
+    login_url = "https://www.zhihu.com/#signin"
+    answer_start_url = "https://www.zhihu.com/api/v4/questions/{0}/answers?sort_by=default&include=data%5B%2A%5D.is_normal%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B%2A%5D.author.badge%5B%3F%28type%3Dbest_answerer%29%5D.topics&limit={1}&offset={2}"
+
+    # 模拟登录帐号
+    username = ''
+    password = ''
     user_type = 'email'
+
+    # 开始放进去的第一个用户的ID
+    start_user = 'fang-liang-0423'
+    # 查询粉丝或者关注列表里面的用户需要附带的参数（见Headers的include）
+    include_follow = 'data[*].answer_count, articles_count, gender, follower_count, is_followed, is_following, badge[?(type = best_answerer)].topics'
+    # 查询个人信息需要附带的参数
+    include_userinfo = 'locations,employments,gender,educations,business,voteup_count,thanked_Count,follower_count,following_count,cover_url,following_topic_count,following_question_count,following_favlists_count,following_columns_count,avatar_hue,answer_count,articles_count,pins_count,question_count,columns_count,commercial_question_count,favorite_count,favorited_count,logs_count,marked_answers_count,marked_answers_text,message_thread_token,account_status,is_active,is_force_renamed,is_bind_sina,sina_weibo_url,sina_weibo_name,show_sina_weibo,is_blocking,is_blocked,is_following,is_followed,mutual_followees_count,vote_to_count,vote_from_count,thank_to_count,thank_from_count,thanked_count,description,hosted_live_count,participated_live_count,allow_message,industry_category,org_name,org_homepage,badge[?(type=best_answerer)].topics'
+    # 获取粉丝列表的url,里面的参数分别是用户的ID，查询参数，offset表示第几页的粉丝或者关注者，limit表示每页的数量，默认20
+    followers_url = 'https://www.zhihu.com/api/v4/members/{user_name}/followers?include={include_follow}&offset={offset}&limit={limit}'
+    # 获取关注列表的URL，根上面的就差了一个字母
+    followees_url = 'https://www.zhihu.com/api/v4/members/{user_name}/followees?include={include_follow}&offset={offset}&limit={limit}'
+    # 提取用户信息信息的url
+    userinfo_url = 'https://www.zhihu.com/api/v4/members/{user_name}?include={include_userinfo}'
 
 
 # ------------------------------------------------------- 模拟登录 -------------------------------------------------------
 
-    # 启动爬虫时调用：请求登录页面
+    # 启动爬虫时调用
     def start_requests(self):
-        # 访问登录页面获取XSRF：<input type="hidden" name="_xsrf" value="cf8064fd32bd58e18abe0ec9ce3a44d6"/>
+        # 访问第一个用户，获取详细信息
+        # yield Request(
+        #     url=self.userinfo_url.format(
+        #         user_name=self.start_user,
+        #         include_userinfo=self.include_userinfo
+        #     ),
+        #     callback=self.get_user_info
+        # )
+
+        # 访问第一个用户的粉丝列表
+        # yield Request(
+        #     url=self.followers_url.format(
+        #         user_name=self.start_user,
+        #         include_follow=self.include_follow,
+        #         offset=0,
+        #         limit=20
+        #     ),
+        #     callback=self.get_followers_parse
+        # )
+
+        # 访问第一个用户的关注列表
+        # yield Request(
+        #     url=self.followees_url.format(
+        #         user_name=self.start_user,
+        #         include_follow=self.include_follow,
+        #         offset=0,
+        #         limit=20
+        #     ),
+        #     callback=self.get_followees_parse
+        # )
+
+        # 请求登录页面
         return [Request(
             self.login_url,
             headers=self.headers,
             callback=self.get_captcha
-        )]
+        )]  # 访问登录页面获取XSRF：<input type="hidden" name="_xsrf" value="cf8064fd32bd58e18abe0ec9ce3a44d6"/>
 
     # 获取xsrf、get请求验证码页面
     def get_captcha(self, response):
@@ -149,11 +198,12 @@ class ZhihuSpider(scrapy.Spider):
             item_loader.add_css("content", "#zh-question-detail")
             item_loader.add_css("answers_count", "#zh-question-answer-num::text")
             item_loader.add_css("comments_count", "#zh-question-meta-wrap a[name='addcomment']::text")
-            item_loader.add_xpath("watch_user_count",
-                                  "//*[@id='zh-question-side-header-wrap']/text()|//*[@class='zh-question-followers-sidebar']/div/a/strong/text()")
+            item_loader.add_xpath(
+                "watch_user_count",
+                "//*[@id='zh-question-side-header-wrap']/text()|//*[@class='zh-question-followers-sidebar']/div/a/strong/text()"
+            )
             item_loader.add_css("topics", ".zm-tag-editor-labels a::text")
         question_item = item_loader.load_item()
-        pass
         yield question_item     # 1、把question item传给pipeline
 
         yield Request(          # 2、获取该问题页面下的答案
@@ -178,7 +228,6 @@ class ZhihuSpider(scrapy.Spider):
             answer_item["comments_count"] = answer["comment_count"]
             answer_item["created_time"] = answer["created_time"]
             answer_item["updated_time"] = answer["updated_time"]
-
             yield answer_item   # 1、把answer item传给pipeline
 
         is_end = answers["paging"]["is_end"]
@@ -189,6 +238,61 @@ class ZhihuSpider(scrapy.Spider):
                 headers=self.headers,
                 callback=self.parse_answer
             )
+
+    def get_user_info(self, response):  # 获取用户信息
+        data = json.loads(response.text)
+        item = ZhihuUserItem()
+        for Field in item.fields:  # 可以获取在item里面定义的key值，就是那些locations，employments等
+            item[Field] = data.get(Field, "")  # 获取字典里面的值
+        yield item
+
+        # 请求该用户的关注列表
+        yield Request(
+            url=self.followers_url.format(
+                user_name=data.get('url_token'),
+                include_follow=self.include_follow,
+                offset=0,
+                limit=20
+            ),
+            callback=self.get_followers_parse
+        )
+
+        # 请求该用户的粉丝列表
+        yield Request(
+            url=self.followees_url.format(
+                user_name=data.get('url_token'),
+                include_follow=self.include_follow,
+                offset=0,
+                limit=20
+            ),
+            callback=self.get_followees_parse
+        )
+
+    # 获取粉丝信息
+    def get_followers_parse(self, response):
+        try:        # 防止有些用户没有粉丝
+            followers_data = json.loads(response.text)
+            try:    # 防止有些用户没有url_token
+                if followers_data.get('data'):  # data里面是一个由字典组成的列表，每个字典是粉丝的相关信息
+                    for one_user in followers_data.get('data'):
+                        user_name = one_user['url_token']   # 提取url_token然后访问他的详细信息
+                        yield Request(
+                            url=self.userinfo_url.format(
+                                user_name=user_name,
+                                include_userinfo=self.include_userinfo
+                            ),
+                            callback=self.get_user_info
+                        )   # 将所有粉丝或者关注者的url_token提取出来，放进一开始构造的用户详细信息的网址里面提取信息
+                if 'paging' in followers_data.keys() and followers_data.get('paging').get('is_end') is False:
+                    yield Request(
+                        url=followers_data.get('paging').get('next'),
+                        callback=self.get_followers_parse
+                    )
+            except Exception as e:
+                print(e, '该用户没有url_token')
+        except Exception as e:
+            print(e, ' 该用户没有粉丝')
+
 
 # 包含yield的函数为生成器函数，在生成值后会自动挂起并暂停他们的执行和状态，本地变量将保存状态信息
 # 对页面未处理完成使用yield，处理完成使用return
