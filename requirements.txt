@@ -33,7 +33,7 @@ pypiwin32==219
 python-dateutil==2.6.0
 pytz==2017.2
 queuelib==1.4.2
-redis==4.5.3
+redis==4.5.4
 requests==2.20.0
 Scrapy==2.6.2
 scrapy-djangoitem==1.1.1
